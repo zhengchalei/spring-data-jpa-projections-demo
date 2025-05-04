@@ -1,4 +1,12 @@
 package com.zhengchalei.springdatajpaprojectionsdemo.entity
 
-interface AuthorRepository: org.springframework.data.jpa.repository.JpaRepository<com.zhengchalei.springdatajpaprojectionsdemo.entity.Author, kotlin.Long> ,org.springframework.data.jpa.repository.JpaSpecificationExecutor<com.zhengchalei.springdatajpaprojectionsdemo.entity.Author> {
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor
+import java.util.Optional
+
+interface AuthorRepository : JpaRepository<Author, Long>, JpaSpecificationExecutor<Author> {
+
+    // 投影查询
+    fun findDtoById(id: Long): AuthorInfo
+
 }
